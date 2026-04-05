@@ -1,5 +1,8 @@
 import streamlit as st
 import base64
+from PIL import Image
+import numpy as np
+import random
 
 def set_bg():
     try:
@@ -18,15 +21,11 @@ def set_bg():
     except FileNotFoundError:
         st.error("Background image 'bg.jpg' not found!")
 
-# Call function
+# Background set kora hochhe
 set_bg()
 
-import streamlit as st
-from PIL import Image
-import numpy as np
-import random
-
-st.markdown("<h1 style='blue: darkred;'>Skin Cancer Detection</h1>", unsafe_allow_html=True)
+# Heading-er colour change kora hoyeche ekhane
+st.markdown("<h1 style='color: #2C3E50; font-weight: bold;'>Skin Cancer Detection</h1>", unsafe_allow_html=True)
 
 st.write("Upload a skin image to detect possible cancer.")
 
@@ -34,10 +33,9 @@ uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.image(image, caption="Uploaded Image", use_container_width=True)
 
     if st.button("Predict"):
-        # Dummy prediction (since model not used in deployment)
         result = random.choice(["Benign", "Malignant"])
         confidence = round(random.uniform(0.7, 0.99), 2)
 
