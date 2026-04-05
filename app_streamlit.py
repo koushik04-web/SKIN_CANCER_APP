@@ -27,4 +27,3 @@ if uploaded_file is not None:
 
 st.warning("⚠️ This is not a medical diagnosis. Please consult a doctor.")
 
-st.warning("⚠️ This is not a medical diagnosis. Please consult a doctor.")
