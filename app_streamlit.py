@@ -1,3 +1,21 @@
+import base64
+
+def set_bg():
+    with open("bg.jpg", "rb") as f:
+        data = f.read()
+    encoded = base64.b64encode(data).decode()
+
+    st.markdown(f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/jgep;base64,{encoded}");
+            background-size: cover;
+            background-position: center;
+        }}
+        </style>
+    """, unsafe_allow_html=True)
+
+set_bg()
 import streamlit as st
 from PIL import Image
 import numpy as np
