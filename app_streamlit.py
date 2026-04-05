@@ -26,7 +26,7 @@ from PIL import Image
 import numpy as np
 import random
 
-st.title("Skin Cancer Detection")
+st.markdown("<h1 style='#1E90FF: darkred;'>Skin Cancer Detection</h1>", unsafe_allow_html=True)
 
 st.write("Upload a skin image to detect possible cancer.")
 
