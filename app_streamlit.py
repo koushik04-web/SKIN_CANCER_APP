@@ -3,46 +3,55 @@ from PIL import Image
 import random
 import base64
 
-# 🔥 Full width layout
+# 🔥 Page config
 st.set_page_config(layout="wide")
 
-# 🔥 Background function
+# 🔥 Background
 def set_bg():
     try:
         with open("bg.jpg", "rb") as f:
             data = f.read()
         encoded = base64.b64encode(data).decode()
 
-        st.markdown(
-            f"""
-            <style>
-            .stApp {{
-                background-image: url("data:image/jpeg;base64,{encoded}");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }}
+        st.markdown(f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/jpeg;base64,{encoded}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }}
 
-            .box {{
-                background: rgba(0, 0, 0, 0.6);
-                padding: 25px;
-                border-radius: 15px;
-                color: white;
-            }}
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
+        /* 🔥 Glass Card UI */
+        .box {{
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }}
+
+        .box h3 {{
+            color: #00BFFF;
+        }}
+
+        .box p {{
+            color: white;
+            font-size: 16px;
+        }}
+
+        </style>
+        """, unsafe_allow_html=True)
     except:
         pass
 
 set_bg()
 
-# 🔥 TITLE
-st.markdown("<h1 style='text-align: center;'>Skin Cancer Detection</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>Upload a skin image to detect possible cancer.</p>", unsafe_allow_html=True)
+# 🔵 TITLE
+st.markdown("<h1 style='text-align: center; color:#00BFFF;'>Skin Cancer Detection</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color:white;'>Upload a skin image to detect possible cancer.</p>", unsafe_allow_html=True)
 
-# 🔥 Upload Section
+# 📤 Upload Section
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
@@ -66,30 +75,30 @@ st.write("---")
 # 🔥 ZIGZAG UI SECTION
 # =========================
 
-# --- CARD 1 (LEFT) ---
-c1_left, c1_gap = st.columns([2, 6])
-with c1_left:
+# LEFT CARD
+c1, _ = st.columns([2, 6])
+with c1:
     st.markdown('<div class="box">', unsafe_allow_html=True)
-    st.markdown("### 🔍 Our Mission")
-    st.write("Our goal is to provide a fast and accessible AI-based system for detecting possible skin cancer.")
+    st.markdown("<h3>🔍 Our Mission</h3>", unsafe_allow_html=True)
+    st.markdown("<p>Our goal is to provide a fast and accessible AI-based system for detecting possible skin cancer.</p>", unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 st.write("")
 
-# --- CARD 2 (RIGHT) ---
-c2_gap, c2_right = st.columns([6, 2])
-with c2_right:
+# RIGHT CARD
+_, c2 = st.columns([6, 2])
+with c2:
     st.markdown('<div class="box">', unsafe_allow_html=True)
-    st.markdown("### 🛠️ How it Works")
-    st.write("This system uses AI concepts to classify skin images as benign or malignant.")
+    st.markdown("<h3>🛠️ How it Works</h3>", unsafe_allow_html=True)
+    st.markdown("<p>This system uses AI concepts to classify skin images.</p>", unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 st.write("")
 
-# --- CARD 3 (LEFT) ---
-c3_left, c3_gap = st.columns([2, 6])
-with c3_left:
+# LEFT CARD
+c3, _ = st.columns([2, 6])
+with c3:
     st.markdown('<div class="box">', unsafe_allow_html=True)
-    st.markdown("### 🚀 Future Updates")
-    st.write("We plan to integrate real AI model, reports, and doctor suggestions.")
+    st.markdown("<h3>🚀 Future Updates</h3>", unsafe_allow_html=True)
+    st.markdown("<p>Coming soon: real AI model, reports and doctor integration.</p>", unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
