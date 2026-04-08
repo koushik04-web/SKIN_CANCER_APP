@@ -71,11 +71,7 @@ st.warning("⚠️ This is not a medical diagnosis. Please consult a doctor.")
 
 st.write("---")
 
-# =========================
-# 🔥 ZIGZAG UI SECTION
-# =========================
 
-# LEFT CARD
 c1, _ = st.columns([2, 6])
 with c1:
     st.markdown('<div class="box">', unsafe_allow_html=True)
